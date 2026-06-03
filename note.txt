@@ -1,0 +1,22 @@
+cd ~/Desktop/ISS2
+cmake --build build -j$(nproc)
+
+./build/backend/backend
+
+./build/frontend/frontend
+
+
+
+zadatak 1.
+import route gdje se salje multipart i validira se xml i json
+    1.crow route
+    2.multipart
+    3.validate xml
+    4.validate json
+    5.if ok FileEntity
+    6.upsert in DB
+    7.return json
+
+curl -X POST http://localhost:8080/api/import \
+  -F "file1=@scripts/sample-file.xml" \
+  -F "file2=@scripts/sample-file.json"
