@@ -5,7 +5,7 @@ cmake --build build -j$(nproc)
 
 ./build/frontend/frontend
 
-
+cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 zadatak 1.
 import route gdje se salje multipart i validira se xml i json
@@ -18,5 +18,5 @@ import route gdje se salje multipart i validira se xml i json
     7.return json
 
 curl -X POST http://localhost:8080/api/import \
-  -F "file1=@scripts/sample-file.xml" \
-  -F "file2=@scripts/sample-file.json"
+  -F "xml=@scripts/sample-file.xml" \
+  -F "json=@scripts/sample-file.json"
