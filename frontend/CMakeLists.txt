@@ -1,4 +1,4 @@
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets Network)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -12,4 +12,4 @@ file(GLOB FRONTEND_SOURCES CONFIGURE_DEPENDS
 
 add_executable(frontend ${FRONTEND_SOURCES})
 target_include_directories(frontend PRIVATE src)
-target_link_libraries(frontend PRIVATE Qt6::Widgets)
+target_link_libraries(frontend PRIVATE Qt6::Widgets Qt6::Network)

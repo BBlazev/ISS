@@ -1,9 +1,15 @@
 #include <QApplication>
-#include "testdialog.hpp"
 
-int main(int argc, char** argv) {
+#include "api_client.hpp"
+#include "import_dialog.hpp"
+
+int main(int argc, char **argv) {
+
     QApplication app(argc, argv);
-    TestDialog dlg;
+
+    ApiClient api;
+
+    ImportDialog dlg(&api);
     dlg.show();
     return app.exec();
 }

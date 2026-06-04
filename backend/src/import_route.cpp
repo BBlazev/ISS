@@ -61,8 +61,9 @@ void register_import_route(crow::SimpleApp &app, Database &db) {
         FileEntity entity;
         try {
             entity = FileEntity::from_json(json_doc);
+            db.upsert_file(entity);
         } catch (const std::exception &e) {
-            return error_response(400, {}, {}, "Entity mapping failed");
+            return error_response(400, {}, {}, "Entity mapping or upserting failed");
         }
 
         json output;

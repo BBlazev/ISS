@@ -1,19 +1,20 @@
 #pragma once
-#include "file_entity.hpp"
-#include <string>
-#include <vector>
-#include <optional>
 #include <sqlite3.h>
 
-class Database
-{
-public:
+#include <optional>
+#include <string>
+#include <vector>
 
-    explicit Database(const std::string& path);
+#include "file_entity.hpp"
+
+class Database {
+  public:
+    explicit Database(const std::string &path);
     ~Database();
 
     void init_schema();
+    void upsert_file(const FileEntity &f);
 
-private:
-    struct sqlite3* db_ = nullptr;
+  private:
+    struct sqlite3 *db_ = nullptr;
 };
