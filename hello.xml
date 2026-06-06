@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:fs="http://localhost:8081/fs.wsdl">
+  <SOAP-ENV:Body>
+    <fs:hello/>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

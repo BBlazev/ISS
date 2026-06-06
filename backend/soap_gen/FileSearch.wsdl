@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="FileSearch"
+  targetNamespace="http://localhost:8081/fs.wsdl"
+  xmlns:tns="http://localhost:8081/fs.wsdl"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:fs="http://localhost:8081/fs.wsdl"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="http://localhost:8081/fs.wsdl"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:fs="http://localhost:8081/fs.wsdl"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="FileResult"><!-- fs__FileResult -->
+          <sequence>
+            <element name="id" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::id -->
+            <element name="filename-download" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::filename_download -->
+            <element name="title" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::title -->
+            <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::type -->
+            <element name="filesize" type="xsd:long" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::filesize -->
+            <element name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::description -->
+            <element name="uploaded-on" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::uploaded_on -->
+          </sequence>
+    </complexType>
+    <!-- operation request element -->
+    <element name="searchFiles">
+      <complexType>
+          <sequence>
+            <element name="term" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__searchFiles::term -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="searchFilesResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="fs:FileResult" minOccurs="1" maxOccurs="unbounded"/><!-- fs__searchFiles::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="hello">
+      <complexType>
+          <sequence>
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="helloResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__hello::result -->
+          </sequence>
+      </complexType>
+    </element>
+  </schema>
+
+</types>
+
+<message name="searchFilesRequest">
+  <part name="Body" element="fs:searchFiles"/><!-- fs__searchFiles::fs__searchFiles -->
+</message>
+
+<message name="searchFilesResponse">
+  <part name="Body" element="fs:searchFilesResponse"/>
+</message>
+
+<message name="helloRequest">
+  <part name="Body" element="fs:hello"/><!-- fs__hello::fs__hello -->
+</message>
+
+<message name="helloResponse">
+  <part name="Body" element="fs:helloResponse"/>
+</message>
+
+<portType name="FileSearchPortType">
+  <operation name="searchFiles">
+    <documentation>Service definition of function fs__searchFiles</documentation>
+    <input message="tns:searchFilesRequest"/>
+    <output message="tns:searchFilesResponse"/>
+  </operation>
+  <operation name="hello">
+    <documentation>Service definition of function fs__hello</documentation>
+    <input message="tns:helloRequest"/>
+    <output message="tns:helloResponse"/>
+  </operation>
+</portType>
+
+<binding name="FileSearch" type="tns:FileSearchPortType">
+  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="searchFiles">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="hello">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="FileSearch">
+  <documentation>gSOAP 2.8.135 generated service definition</documentation>
+  <port name="FileSearch" binding="tns:FileSearch">
+    <SOAP:address location="http://localhost:8081"/>
+  </port>
+</service>
+
+</definitions>

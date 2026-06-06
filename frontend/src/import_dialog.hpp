@@ -24,7 +24,7 @@ class ImportDialog : public QDialog {
     void on_importBtn_clicked();
 
   private:
-    Ui::Dialog ui_;
+    Ui::ImportDialog_UI ui_;
 
     ApiClient *api_;
     QByteArray xml_;

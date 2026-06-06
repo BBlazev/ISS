@@ -11,6 +11,9 @@
 
 ImportDialog::ImportDialog(ApiClient *api, QWidget *parent) : QDialog(parent), api_(api) {
     ui_.setupUi(this);
+    ui_.selectXmlBtn->setText("Select XML");
+    ui_.selectJsonBtn->setText("Select JSON");
+    ui_.importBtn->setText("Validate");
     ui_.replyEdit->setReadOnly(true);
     ui_.importBtn->setEnabled(false);
 }

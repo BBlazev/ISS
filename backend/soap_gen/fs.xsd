@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <schema targetNamespace="http://localhost:8081/fs.wsdl"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:fs="http://localhost:8081/fs.wsdl"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="FileResult"><!-- fs__FileResult -->
+          <sequence>
+            <element name="id" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::id -->
+            <element name="filename-download" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::filename_download -->
+            <element name="title" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::title -->
+            <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::type -->
+            <element name="filesize" type="xsd:long" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::filesize -->
+            <element name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::description -->
+            <element name="uploaded-on" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__FileResult::uploaded_on -->
+          </sequence>
+    </complexType>
+    <!-- operation request element -->
+    <element name="searchFiles">
+      <complexType>
+          <sequence>
+            <element name="term" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__searchFiles::term -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="searchFilesResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="fs:FileResult" minOccurs="1" maxOccurs="unbounded"/><!-- fs__searchFiles::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="hello">
+      <complexType>
+          <sequence>
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="helloResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- fs__hello::result -->
+          </sequence>
+      </complexType>
+    </element>
+  </schema>
+

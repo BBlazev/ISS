@@ -33,6 +33,7 @@ class ApiClient : public QObject {
 
     void importFiles(const QByteArray &xml, const QByteArray &json,
                      std::function<void(bool, QString, QString)> cb);
+    void soapFile(const QByteArray &xml, std::function<void(bool, QString, QString)> cb);
 
   private:
     QNetworkAccessManager net_;

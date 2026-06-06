@@ -20,3 +20,11 @@ import route gdje se salje multipart i validira se xml i json
 curl -X POST http://localhost:8080/api/import \
   -F "xml=@scripts/sample-file.xml" \
   -F "json=@scripts/sample-file.json"
+
+
+soapcpp2 -j -S -d backend/soap_gen -I/usr/share/gsoap/import backend/soap/file_search.h
+https://www.genivia.com/dev.html
+https://genivia.com/doc/guide/html/index.html
+
+sed -i 's|// gsoap|//gsoap|g' backend/soap/file_search.h
+

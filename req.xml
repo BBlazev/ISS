@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:fs="http://localhost:8081/fs.wsdl">
+  <SOAP-ENV:Body>
+    <fs:searchFiles>
+      <term>rabbitas</term>
+    </fs:searchFiles>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

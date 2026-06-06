@@ -1,7 +1,9 @@
+#include <QFile>
 #include <QHttpMultiPart>
 #include <QNetworkReply>
 #include <qcborvalue.h>
 #include <qcoreapplication.h>
+#include <qevent.h>
 #include <qhashfunctions.h>
 #include <qnetworkaccessmanager.h>
 #include <qnetworkrequest.h>
@@ -41,5 +43,23 @@ void ApiClient::importFiles(const QByteArray &xml, const QByteArray &json,
         int code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
         bool ok(code == 200 || code == 201);
         cb(ok, QString::fromUtf8(data), ok ? "" : QString("HTTP %1").arg(code));
+    });
+}
+
+void ApiClient::soapFile(const QByteArray &xml, std::function<void(bool, QString, QString)> cb) {
+    QNetworkRequest req(QUrl("http://localhost:8081"));
+    req.setHeader(QNetworkRequest::ContentTypeHeader, "text/xml; charset=utf-8");
+    req.setRawHeader("SOAPAction", "\"\"");
+
+    QNetworkReply *reply = net_.post(req, xml);
+
+    connect(reply, &QNetworkReply::finished, this, [reply, cb]() {
+        QByteArray data = reply->readAll();
+        if (reply->error() != QNetworkReply::NoError) {
+            cb(false, {}, "SOAP error: " + reply->errorString());
+        } else {
+            cb(true, QString::fromUtf8(data), "");
+        }
+        reply->deleteLater();
     });
 }
