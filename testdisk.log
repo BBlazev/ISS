@@ -1,0 +1,24 @@
+
+
+Mon Jun  8 12:07:28 2026
+Command line: TestDisk
+
+TestDisk 7.2, Data Recovery Utility, February 2024
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+OS: Linux, kernel 6.12.43+deb13-amd64 (#1 SMP PREEMPT_DYNAMIC Debian 6.12.43-1 (2025-08-27)) x86_64
+Compiler: GCC 14.2
+ext2fs lib: 1.47.2, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.5
+/dev/sda: LBA, LBA48 support
+/dev/sda: size       216813184 sectors
+/dev/sda: user_max   216813184 sectors
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+/dev/sr0 is not an ATA disk
+Hard disk list
+Disk /dev/sda - 111 GB / 103 GiB - CHS 13495 255 63, sector size=512 - VBOX HARDDISK, FW:1.0
+Disk /dev/sr0 - 61 MB / 58 MiB - 29947 sectors (RO), sector size=2048 - CD-ROM, FW:1.0
+
+Partition table type (auto): Intel
+Disk /dev/sda - 111 GB / 103 GiB - VBOX HARDDISK
+Partition table type: Intel
+SIGHUP detected! PhotoRec has been killed.

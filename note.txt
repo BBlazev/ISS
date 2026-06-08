@@ -28,3 +28,23 @@ https://genivia.com/doc/guide/html/index.html
 
 sed -i 's|// gsoap|//gsoap|g' backend/soap/file_search.h
 
+mvn archetype:generate \
+  -DgroupId=iss.validator \
+  -DartifactId=validator \
+  -DarchetypeArtifactId=maven-archetype-quickstart \
+  -DarchetypeVersion=1.4 \
+  -DinteractiveMode=false
+
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+jakarta bind api i jaxb runtime
+https://mvnrepository.com 
+
+shade plugin https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html
+
+
+jaxb generation plugin https://www.mojohaus.org/jaxb2-maven-plugin/example_xjc_basic.html
+
+mvn generate-sources
+mvn org.codehaus.mojo:jaxb2-maven-plugin:3.1.0:xjc
+
