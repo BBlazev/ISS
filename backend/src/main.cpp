@@ -6,6 +6,7 @@
 #include "config.hpp"
 #include "db.hpp"
 #include "import_route.hpp"
+#include "java.hpp"
 #include "soap_server.hpp"
 
 #include "crow/app.h"
@@ -13,6 +14,12 @@
 int main() {
 
     Config cnf = Config::load(".env");
+
+    Result res;
+
+    res = validate_java("files.xml");
+    std::cout << res.code << "\n";
+    std::cout << res.output << "\n";
 
     std::println("{}", cnf.directus_token);
 

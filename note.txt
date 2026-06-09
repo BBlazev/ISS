@@ -7,6 +7,10 @@ cmake --build build -j$(nproc)
 
 cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
+rm -rf build
+cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake --build build
+
 zadatak 1.
 import route gdje se salje multipart i validira se xml i json
     1.crow route
