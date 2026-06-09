@@ -1,6 +1,8 @@
 #include <QFile>
 #include <QHttpMultiPart>
 #include <QNetworkReply>
+#include <cstdio>
+#include <cstdlib>
 #include <qcborvalue.h>
 #include <qcoreapplication.h>
 #include <qevent.h>
@@ -9,8 +11,11 @@
 #include <qnetworkrequest.h>
 #include <qobject.h>
 #include <qstringview.h>
+#include <sys/wait.h>
 
+#include <array>
 #include <functional>
+#include <string>
 
 #include "api_client.hpp"
 
@@ -62,4 +67,31 @@ void ApiClient::soapFile(const QByteArray &xml, std::function<void(bool, QString
         }
         reply->deleteLater();
     });
+}
+
+Result ApiClient::java_validate() {
+
+    static const std::string JAR_PATH = "validator/target/validator.jar";
+    static const std::string XSD_PATH = "schemas/files.xsd";
+
+    Result result;
+    std::string cmd = "java -jar " + JAR_PATH + " " + "files.xml" + " " + XSD_PATH + " 2>&1";
+
+    FILE *p = popen(cmd.c_str(), "r");
+    if (!p) {
+        result.code = -1;
+        return {result.code, "{\"valid\":false,\"errors\":[],\"error\":\"failed to start java\"}"};
+    }
+    std::array<char, 256> buffer;
+
+    while (fgets(buffer.data(), buffer.size(), p) != nullptr) {
+        result.output += buffer.data();
+    }
+    int status = pclose(p);
+    if (status == -1)
+        result.code = -1;
+    else
+        result.code = WEXITSTATUS(status);
+
+    return result;
 }

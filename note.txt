@@ -48,6 +48,11 @@ shade plugin https://maven.apache.org/plugins/maven-shade-plugin/examples/execut
 
 
 jaxb generation plugin https://www.mojohaus.org/jaxb2-maven-plugin/example_xjc_basic.html
+https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/ValidationEventHandler.html
+https://docs.oracle.com/javase/8/docs/api/javax/xml/bind/util/ValidationEventCollector.html
+http://blog.bdoughan.com/2010/12/jaxb-and-marshalunmarshal-schema.html
+
+
 
 mvn generate-sources
 mvn org.codehaus.mojo:jaxb2-maven-plugin:3.1.0:xjc

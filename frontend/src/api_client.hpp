@@ -22,6 +22,11 @@ struct Session {
     bool isFullAccess() const { return role == "full_access"; }
 };
 
+struct Result {
+    bool code;
+    std::string output;
+};
+
 class ApiClient : public QObject {
     Q_OBJECT
   public:
@@ -34,6 +39,8 @@ class ApiClient : public QObject {
     void importFiles(const QByteArray &xml, const QByteArray &json,
                      std::function<void(bool, QString, QString)> cb);
     void soapFile(const QByteArray &xml, std::function<void(bool, QString, QString)> cb);
+
+    Result java_validate();
 
   private:
     QNetworkAccessManager net_;
